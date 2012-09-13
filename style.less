@@ -95,14 +95,14 @@
 @leftContentPadding: (@logoWidth + @pagelinesColumnPadding);
 @rightContentPadding: 4*@leftContentPadding;
 
+@baseColor3: @pl-header; //spin(@baseColor2, 120);
+@baseColor2: saturate(spin(@baseColor3, -120),100%);
+@baseColor2l: lighten(@baseColor2, 5%);
+@baseColor1: spin(@baseColor2, -120);
+@baseColor1l: saturate(@baseColor1, 50%);
 @baseColor0: desaturate(@baseColor1, 100%);
 @baseColor0d: darken(@baseColor0, 20%);
 @baseColor0l: lighten(@baseColor0, 20%);
-@baseColor1: spin(#622066, 10);
-@baseColor1l: saturate(@baseColor1, 50%);
-@baseColor2: saturate(spin(@baseColor1, 120),100%);
-@baseColor2l: lighten(@baseColor2, 5%);
-@baseColor3: spin(@baseColor2, 120);
 
 @textColor: #000000;
 @decoColor: @baseColor2;
@@ -145,7 +145,7 @@ body {
 	z-index: 1;
 }
 .branding2_wrap {
-	padding-bottom: 18*@gridSize;
+	padding-bottom: 20*@gridSize;
 	position: relative;
 	.box-sizing(border-box);
 	.header-content {
@@ -413,3 +413,16 @@ body {
 
 
 
+hr, .fpost, .clip_box, .widget-title, .metabar a, #morefoot .widget-title, #site #dsq-content h3, .navigation_wrap, .setup_area, .fpost .post-thumb img, .clip .clip-thumb img, .author-thumb img, ul.sf-menu ul li { border-color: transparent; }
+
+.widget {
+	.widget-pad {
+		& > ul {
+			margin-left: 0;
+			& > li {
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
+	}
+}

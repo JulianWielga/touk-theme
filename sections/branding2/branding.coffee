@@ -4,12 +4,10 @@ class window.HeaderView
     @$el.find(selector)
 
   constructor: (el) ->
-    console.log 'constructor', el
     @$el = el
     @initialize()
 
   initialize: ->
-    console.log 'initialize'
     @$document = jQuery(document)
     @$logo = @$('.logo')
     @$about = @$('.about')
@@ -22,7 +20,6 @@ class window.HeaderView
 
   adjustPosition: =>
     @_scrollTop = window.pageYOffset
-    console.log @_scrollTop
 
 
     @$title.css top: if @_scrollTop > @$title._offset.top then 0 else @$title._offset.top - @_scrollTop
@@ -59,7 +56,6 @@ class window.HeaderView
     @$el.css
       position: 'fixed'
       width: '100%'
-      overflow: 'hidden'
 
     @$title._offset = @$title?.offset()
     @$line._offset = @$line?.offset()
@@ -71,4 +67,3 @@ class window.HeaderView
     @$titles = jQuery('#column-main .entry-title')
 
 window.branding2 = new HeaderView(jQuery('#branding2'))
-console.log 'branding loaded'
