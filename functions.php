@@ -42,21 +42,3 @@ function my_google_font( $thefoundry ) {
 		);
 	return array_merge( $thefoundry, $myfont );
 }
-
-
-
-function head_top() {
-    ?>
-        <!-- head top -->
-    <?php
-}
-function head_bottom() {
-    ?>
-        <!-- head bottom -->
-    <?php
-}
-
-add_action ('pagelines_head','head_top');
-add_action ('pagelines_head_last','head_bottom');
-add_action ('pagelines_before_site','head_bottom');
-add_action ('pagelines_before_site','head_bottom');

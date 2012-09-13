@@ -53,10 +53,10 @@ class PageLinesToukBranding extends PageLinesSection
     function section_template() {
         enqueue_coffeescript('branding2', $this->base_dir . '/branding.coffee', array('jquery'), false, false);
     ?>
-<!--        <div class="test a"></div>-->
-<!--        <div class="test b"></div>-->
-<!--        <div class="test c"></div>-->
-<!--        <div class="test d"></div>-->
+        <div class="test a"></div>
+        <div class="test b"></div>
+        <div class="test c"></div>
+        <div class="test d"></div>
         <div class="branding2_wrap">
             <div class="header-background">
                <div class="inner"></div>
