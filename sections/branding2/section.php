@@ -48,19 +48,32 @@ class PageLinesToukBranding extends PageLinesSection
     }
 
     /**
+     * Before Section
+     *
+     * Starts general section wrapper classes content and content-pad; adds class to uniquely identify clones
+     * Dynamically creates unique hooks for section: pagelines_before_, pagelines_outer_, and pagelines_inside_top_
+     *
+     * @since       ...
+     *
+     * @param       string $markup
+     * @param       null $clone_id
+     * @param       string $classes
+     *
+     * @internal    param string $conjugation
+     *
+     * @uses        pagelines_register_hook
+     */
+	function before_section( $markup = 'content', $clone_id = null, $classes = ''){
+        parent::before_section( $markup, $clone_id, $classes);
+    }
+
+    /**
      * Section template.
      */
     function section_template() {
         enqueue_coffeescript('branding2', $this->base_dir . '/branding.coffee', array('jquery'), false, false);
     ?>
-        <div class="test a"></div>
-        <div class="test b"></div>
-        <div class="test c"></div>
-        <div class="test d"></div>
         <div class="branding2_wrap">
-            <div class="header-background">
-               <div class="inner"></div>
-            </div>
             <div class="header-content">
                 <div class="logo">
                     <div class="inner"><?php pagelines_main_logo()?></div>

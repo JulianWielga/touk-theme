@@ -132,25 +132,24 @@ body {
         url('@{plChildRoot}/images/back.jpg') top left repeat;
 }
 
+.header-background {
+	.shape(white, 100%, @barHeight, -(@barHeight+10));
+	.inner {
+		.gradient(white, fade(#eeeeee, 90%), #e0e0e0);
+		.drop-shadow(0, 1px, 3px, 0.2);
+	}
+}
+.header-background {
+	position: absolute;
+	left: 0;
+	z-index: 1;
+}
 .branding2_wrap {
-    padding-bottom: 18*@gridSize;
-    position: relative;
-    .box-sizing(border-box);
-    .header-background {
-        .shape(white, 100%, @barHeight, -(@barHeight+10));
-        .inner {
-            .gradient(white, fade(#eeeeee, 90%), #e0e0e0);
-            .drop-shadow(0, 1px, 3px, 0.2);
-        }
-    }
-    .header-background {
-        position: fixed;
-        left: 0;
-        z-index: 1;
-//        display: none;
-    }
-    .header-content {
-        margin: 0 auto;
+	padding-bottom: 18*@gridSize;
+	position: relative;
+	.box-sizing(border-box);
+	.header-content {
+	    margin: 0 auto;
         padding: 0;
         position: relative;
         .logo {
@@ -414,29 +413,3 @@ body {
 
 
 
-
-.test {
-    width: 15px;
-    height: 15px;
-    position: absolute;
-    &.a {
-        background: red;
-        top: 0;
-        left: 0;
-    }
-    &.b {
-        background: green;
-        top: 0;
-        right: 0;
-    }
-    &.c {
-        background: blue;
-        bottom: 0;
-        right: 0;
-    }
-    &.d {
-        background: yellow;
-        bottom: 0;
-        left: 0;
-    }
-}

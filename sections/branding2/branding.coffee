@@ -16,7 +16,7 @@ class window.HeaderView
     @$title = @$('.title')
     @$line = @$('.line')
     @$deco = @$('.deco')
-    @$background = @$('.header-background')
+    @$background = jQuery('<div class="header-background">').append('<div class="inner">').appendTo @$el
     @$document.on 'scroll.header', @adjustPosition
     @_afterShow()
 
@@ -65,24 +65,8 @@ class window.HeaderView
     @$line._offset = @$line?.offset()
     @$logo._offset = @$logo?.offset()
     @$about._offset = @$about?.offset()
-    @$background._offset = @$background?.offset()
-
-#    $fixedElements = @$logo.add @$about.add @$title.add @$line.add @$deco.add @$background
-#    $fixedElements.each ->
-#      $el = jQuery(this)
-#      console.log $el
-#      t = $el.offset().top
-#      l = $el.offset().left
-#      w = $el.width()
-#      h = $el.height()
-#      $el.css
-#        top: t
-#        left: l
-#        width: w
-#        height: h
-#        position: 'fixed'
-
-    @$background._borderColor = @$background.children().css 'borderColor'
+    @$background._offset = @$background?.position()
+#    @$background._borderColor = @$background.children().css 'borderColor'
     @$subtitle = @$title.find('.subtitle').hide()
     @$titles = jQuery('#column-main .entry-title')
 
