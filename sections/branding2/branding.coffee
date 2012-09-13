@@ -87,3 +87,4 @@ class window.HeaderView
     @$titles = jQuery('#column-main .entry-title')
 
 window.branding2 = new HeaderView(jQuery('#branding2'))
+console.log 'branding loaded'
