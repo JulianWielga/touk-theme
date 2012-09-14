@@ -70,9 +70,9 @@ class window.HeaderView
 
 
   _afterShow: =>
-    @_scrollTop = window.pageYOffset
-    @_parentTop = @$background.offsetParent().offset().top
-    @_positionDiff = @_parentTop - @_scrollTop
+    _scrollTop = window.pageYOffset
+    _parentTop = @$background.offsetParent().offset().top
+    @_positionDiff = _parentTop - _scrollTop
 
     @$el.css
       position: 'fixed'
