@@ -29,9 +29,10 @@ require_once( dirname(__FILE__) . '/setup.php' );
 	// The following filter will add the font  Ubuntu into the font array $thefoundry.
 	// This makes the font available to the framework and the user via the admin panel.
 
-add_filter ( 'pagelines_foundry', 'my_google_font' );
+add_filter('pagelines_foundry', 'addMSFont');
+add_action('wp_enqueue_scripts', 'toukThemeEnqueue');
 
-function my_google_font( $thefoundry ) {
+function addMSFont( $thefoundry ) {
 	$myfont = array( 'MuseoSans' => array(
 			'name' => 'MuseoSans',
 			'family' => '"MuseoSans", arial, serif',
@@ -41,4 +42,9 @@ function my_google_font( $thefoundry ) {
 			)
 		);
 	return array_merge( $thefoundry, $myfont );
+}
+
+function toukThemeEnqueue() {
+  $ss_url = get_stylesheet_directory_uri();
+  wp_enqueue_script( 'touk-theme-scripts', "{$ss_url}/js/jquery.easing.1.3.js", array('jquery') );
 }

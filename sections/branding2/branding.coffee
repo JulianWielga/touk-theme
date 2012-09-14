@@ -1,5 +1,22 @@
 class window.HeaderView
 
+  $el: null
+  $document: null
+  $logo: null
+  $about: null
+  $title: null
+  $titles: null
+  $line: null
+  $deco: null
+  $background: null
+
+  oldTitle: ''
+  lastTitle: ''
+
+  _scrollTop: 0
+  _parentTop: 0
+  _positionDiff: 0
+
   $: (selector) ->
     @$el.find(selector)
 
@@ -20,48 +37,52 @@ class window.HeaderView
 
   adjustPosition: =>
     @_scrollTop = window.pageYOffset
+    @_parentTop = @$background.offsetParent().offset().top
+
+    @$title.css top: if @_scrollTop > @$title._top then 0 else @$title._top - @_scrollTop
+    @$line.css top: if @scrollTop > @$line._top then -100 else @$line._top - @_scrollTop
 
 
-    @$title.css top: if @_scrollTop > @$title._offset.top then 0 else @$title._offset.top - @_scrollTop
-    @$line.css top: if @scrollTop > @$line._offset.top then -100 else @$line._offset.top - @_scrollTop
-
-    p = @_scrollTop / @$title._offset.top                   # 0-n
-    q = 1 - (@$title.position().top / @$title._offset.top)  # 0-1
+    p = @_scrollTop / @$title._top                   # 0-n
+    q = 1 - (@$title.position().top / @$title._top)  # 0-1
 
     if p < 20
-      @$logo.css top: @_calculateTop @$logo._offset.top
-      @$about.css top: (@_calculateTop @$about._offset.top) - @_scrollTop
-      @$background.css top: @_calculateTop @$background._offset.top
+      @$logo.css top: @_calculateTop @$logo._top
+      @$about.css top: (@_calculateTop @$about._top) - @_scrollTop
+      @$background.css top: @_calculateTop @$background._top
       @$about.css opacity: 1-q
 
     @oldTitle = @$subtitle.text()
     @lastTitle = ""
-    
+
     @$titles.each (i, el) =>
       $title = jQuery(el)
-      if $title.offset().top + $title.height() * (2 / 3) - @_scrollTop < @$background.height()
+      if $title.offset().top + ($title.height() / 4) < @_scrollTop + @$background.height() + @_positionDiff
         @lastTitle = " #{jQuery(el).text()}"
     if @oldTitle isnt @lastTitle
       @$subtitle.stop().hide()
-    @$subtitle.text(@lastTitle).fadeIn 150  #'easeInExpo'
+    @$subtitle.text(@lastTitle).fadeIn 250, 'easeInExpo'
 
 
 
   _calculateTop: (offsetTop) ->
-    @$title.position().top * offsetTop / @$title._offset.top
+    @$title.position().top * offsetTop / @$title._top
 
 
   _afterShow: =>
-    @$el.parent().height @$el.height()
+    @_scrollTop = window.pageYOffset
+    @_parentTop = @$background.offsetParent().offset().top
+    @_positionDiff = @_parentTop - @_scrollTop
+
     @$el.css
       position: 'fixed'
       width: '100%'
 
-    @$title._offset = @$title?.offset()
-    @$line._offset = @$line?.offset()
-    @$logo._offset = @$logo?.offset()
-    @$about._offset = @$about?.offset()
-    @$background._offset = @$background?.position()
+    @$title._top = @$title?.offset().top - @_positionDiff
+    @$line._top = @$line?.offset().top - @_positionDiff
+    @$logo._top = @$logo?.offset().top - @_positionDiff
+    @$about._top = @$about?.offset().top - @_positionDiff
+    @$background._top = @$background?.offset().top - @_positionDiff
 #    @$background._borderColor = @$background.children().css 'borderColor'
     @$subtitle = @$title.find('.subtitle').hide()
     @$titles = jQuery('#column-main .entry-title')

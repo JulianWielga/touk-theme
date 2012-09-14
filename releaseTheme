@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ -n "$1" ]
+# Test whether command-line argument is present (non-empty).
+then
+  git tag $1 && git push origin $1
+else  
+  echo "version!"
+  exit
+fi
