@@ -131,7 +131,7 @@ body {
     background:
         url('@{plChildRoot}/images/circles.png') top center no-repeat,
         url('@{plChildRoot}/images/circles2.png') bottom center no-repeat,
-        url('@{plChildRoot}/images/back.jpg') top left repeat;
+        url('@{plChildRoot}/images/back.jpg') top right repeat;
 }
 
 .header-background {
@@ -180,29 +180,32 @@ body {
             }
         }
         .title {
-            .shape(transparent, 100%, @titleHeight, @titleTop, @leftContentPadding);
+            .shape(transparent, 100%, @titleHeight, @titleTop, 0);
             z-index: 2;
             line-height: 2*@gridSize;
             font-size: 30px;
-//			overflow: hidden;
-            text-overflow: ellipsis;
-            text-transform: lowercase;
             height: @barHeight;
-            .inner {
-                margin-top: 2*@gridSize;
+	        .inner {
+		        padding-left: @leftContentPadding;
+		        padding-right: 4 * @leftContentPadding;
+		        .box-sizing(border-box);
+		        text-transform: lowercase;
+		        margin-top: 2*@gridSize;
                 padding-top: 2px;
-                width: auto;
                 text-overflow: ellipsis;
                 overflow: hidden;
                 white-space: nowrap;
-                width: 70%;
-                .subtitle {
-                    color: @baseColor3;
-                    font-size: 15px;
-                    font-weight: 300;
+	            color: @baseColor3;
+		        font-size: 15px;
+		        font-weight: 300;
+		        .main {
+			        font-weight: 100;
+			        font-size: 30px;
+			        color: @pl-text;
+	            }
+		        .subtitle {
                     text-transform: none;
                     white-space: nowrap;
-                    text-overflow: ellipsis;
                 }
             }
         }
@@ -285,6 +288,9 @@ body {
             top: @decoTop - 35;
             right: -102px;
         }
+		.branding2_wrap .header-content .title .inner {
+			padding-right: @leftContentPadding * 3 - 40;
+		}
 //        .responsive #branding2 .header-content .logo {
 //            top: @logoTop;
 //        }
@@ -297,6 +303,9 @@ body {
             top: @decoTop - 45;
             right: -106px;
         }
+		.branding2_wrap .header-content .title .inner {
+			padding-right: @leftContentPadding * 2;
+		}
 //        .responsive #branding2 .header-content .logo {
 //            top: @logoTop - 2 * @gridSize;
 //        }
@@ -315,8 +324,12 @@ body {
             top: @decoTop - 75;
             right: -142px;
         }
+		.branding2_wrap .header-content .title .inner {
+			padding-right: 0 * @leftContentPadding;
+		}
 	}
 
+	.branding2_wrap .header-content .title .inner,
     #branding2 .deco {
 	    transition:all .5s ease-in-out;
 	    -o-transition:all .5s ease-in-out;
