@@ -181,7 +181,7 @@ body {
         }
         .title {
             .shape(transparent, 100%, @titleHeight, @titleTop, @leftContentPadding);
-            z-index: 3;
+            z-index: 2;
             line-height: 2*@gridSize;
             font-size: 30px;
 //			overflow: hidden;
@@ -220,7 +220,7 @@ body {
             .shape(@baseColor0, @decoSize, @decoSize, @decoTop, auto);
             right: -32px;
             height: 0;
-            z-index: 2;
+            z-index: 3;
             .inner {
                 .border-radius(@decoSize, @decoSize,@decoSize,@decoSize);
                 .box-shadow(-10px 10px 2px @baseColor2l);
@@ -236,6 +236,7 @@ body {
                     right: 0;
                     padding: 0 @langElHeight*6;
                     text-align: right;
+	                text-transform: lowercase;
                     ul {
                         display: inline-block;
                         margin: 0;
@@ -257,10 +258,15 @@ body {
                             .drop-shadow(0px, 1px, 3px, 20%);
                             .rounded(1px);
                             cursor: pointer;
-                            &.selected {
-                            }
-                            &:hover {
-                                background: @baseColor2;
+	                        &.selected {
+		                        font-weight: bold;
+	                        }
+	                        &:hover {
+		                        background: @baseColor2;
+		                        .rounded(1px);
+	                        }
+                            a {
+	                            color: inherit;
                             }
                         }
                     }
@@ -450,7 +456,7 @@ body {
 //		color: fadeout(@dark-base, 40%);
 //	}
 //		.cnt-comments a, #wp-calendar caption, .searchform .searchfield, .wp-caption, .commentlist .alt, #wp-calendar #today, .post-nav, .current_posts_info, .success,  .content-pagination a .cp-num, .hentry table .alternate td, .playpause, .main-nav li:hover, .main-nav .current-page-ancestor a,  .main-nav li.current-page-ancestor ul a, .main-nav li.current_page_item a, .main-nav li.current-menu-item a, .sf-menu li li, .sf-menu li li li{
-//			background-color: @dark-base;
+//			background-color: transparent;
 //		}
 //
 //			.post-nav a, .post-nav a:visited, .main_nav .current-menu-item a, .main_nav li a:hover, .main_nav li a:hover, {

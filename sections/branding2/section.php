@@ -90,13 +90,24 @@ class PageLinesToukBranding extends PageLinesSection
                 </div>
                 <div class="deco">
                     <div class="inner">
-                        <div class="lang">
-                            <span>język</span>
-                            <ul>
-                                <li class="pl selected">polski</li>
-                                <li class="en">english</li>
-                            </ul>
-                        </div>
+                        <?php if (function_exists(qtrans_getLanguage)) {
+                            global $q_config;?>
+                            <div class="lang">
+                                <span><?=__('Language', 'qtranslate')?></span>
+                                <ul>
+                                <?php
+                                    foreach(qtrans_getSortedLanguages() as $language) {
+                                        $classes = array($language);
+                                        if($language == $q_config['language'])
+                                            $classes[] = 'selected';
+                                        echo '<li class="'. implode(' ', $classes) .'"><a href="'.qtrans_convertURL($url, $language).'" hreflang="'.$language.'" title="'.$q_config['language_name'][$language].'">';
+                                        echo $q_config['language_name'][$language];
+                                        echo "</a></li>\n";
+                                    }
+                                ?>
+                                </ul>
+                            </div>
+                        <?php }?>
                     </div>
                 </div>
             </div>
