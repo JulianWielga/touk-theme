@@ -32,7 +32,7 @@ class window.HeaderView
     @$line = @$('.line')
     @$deco = @$('.deco')
     @$background = jQuery('<div class="header-background">').append('<div class="inner">').appendTo @$el
-    @$document.on 'scroll.header', @adjustPosition
+    @$document.on 'scroll.header touchstop.header', @adjustPosition
     @_afterShow()
 
   adjustPosition: =>
@@ -40,13 +40,12 @@ class window.HeaderView
     @_parentTop = @$background.offsetParent().offset().top
 
     @$title.css top: if @_scrollTop > @$title._top then 0 else @$title._top - @_scrollTop
-    @$line.css top: if @scrollTop > @$line._top then -100 else @$line._top - @_scrollTop
+    @$line.css top: if @_scrollTop > @$line._top then -100 else @$line._top - @_scrollTop
 
 
     p = @_scrollTop / @$title._top                   # 0-n
-    q = 1 - (@$title.position().top / @$title._top)  # 0-1
-
     if p < 20
+      q = 1 - (@$title.position().top / @$title._top)  # 0-1
       @$logo.css top: @_calculateTop @$logo._top
       @$about.css top: (@_calculateTop @$about._top) - @_scrollTop
       @$background.css top: @_calculateTop @$background._top
@@ -58,7 +57,8 @@ class window.HeaderView
     @$titles.each (i, el) =>
       $title = jQuery(el)
       if $title.offset().top + ($title.height() / 4) < @_scrollTop + @$background.height() + @_positionDiff
-        @lastTitle = " #{jQuery(el).text()}"
+        @lastTitle = jQuery(el).text()
+
     if @oldTitle isnt @lastTitle
       @$subtitle.stop().hide()
     @$subtitle.text(@lastTitle).fadeIn 250, 'easeInExpo'
@@ -74,10 +74,6 @@ class window.HeaderView
     _parentTop = @$background.offsetParent().offset().top
     @_positionDiff = _parentTop - _scrollTop
 
-    @$el.css
-      position: 'fixed'
-      width: '100%'
-
     @$title._top = @$title?.offset().top - @_positionDiff
     @$line._top = @$line?.offset().top - @_positionDiff
     @$logo._top = @$logo?.offset().top - @_positionDiff
@@ -86,5 +82,10 @@ class window.HeaderView
 #    @$background._borderColor = @$background.children().css 'borderColor'
     @$subtitle = @$title.find('.subtitle').hide()
     @$titles = jQuery('#column-main .entry-title')
+
+    @$el.css
+      position: 'fixed'
+      width: '100%'
+
 
 window.branding2 = new HeaderView(jQuery('#branding2'))
