@@ -1,4 +1,10 @@
-jQuery('.social-icons a').hover ->
-  jQuery(this).fadeTo('fast', 1)
+$ = jQuery
+
+$socialIcons = $('.social-icons a')
+
+$socialIcons.hover ->
+  $(this).fadeTo 'fast', 1
 , ->
-  jQuery(this).fadeTo('fast', 0.5)
+  $(this).fadeTo 'fast', 0.5
+
+$socialIcons.fadeTo 0.5
