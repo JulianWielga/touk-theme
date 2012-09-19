@@ -3,7 +3,7 @@
 }
 .transparency(@o) {
 	opacity: @o / 100;
-	filter: alpha(opacity = @o);
+	filter: ~"alpha(opacity = @{o})";
 }
 .text-shadow(@arguments){
 	-webkit-text-shadow: @arguments;
