@@ -1,6 +1,10 @@
 .pie() {
 	behavior: url(@{plPluginsRoot}/wp-pie/pie/PIE.htc);
 }
+.opacity(@o) {
+	opacity: @o / 100;
+	filter: alpha(opacity = @o);
+}
 .text-shadow(@arguments){
 	-webkit-text-shadow: @arguments;
 	-moz-text-shadow: @arguments;
@@ -151,6 +155,9 @@ body {
 	.inner {
 		.gradient(white, fade(#eeeeee, 90%), #e0e0e0);
 		.drop-shadow(0, 1px, 3px, 0.2);
+		.no-rgba & {
+			.opacity(90);
+		}
 	}
 }
 .header-background {
@@ -228,6 +235,9 @@ body {
             .inner {
                 .gradient(white, fade(@baseColor0, 15%), fade(@baseColor0, 0%));
                 .border-radius(100%, 100%, 0, 100%);
+	            .no-rgba & {
+                    .opacity(10);
+                }
             }
         }
         .deco {
