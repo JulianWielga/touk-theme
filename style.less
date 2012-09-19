@@ -20,7 +20,6 @@
 }
 
 .border-radius(@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0){
-	.pie();
 	-webkit-border-top-left-radius: @topleft;
 	-webkit-border-top-right-radius: @topright;
 	-webkit-border-bottom-right-radius: @bottomright;
@@ -29,11 +28,12 @@
 	-moz-border-radius-topright: @topright;
 	-moz-border-radius-bottomright: @bottomright;
 	-moz-border-radius-bottomleft: @bottomleft;
-	border-radius: @topleft, @topright, @bottomright, @bottomleft;
+	border-radius: @topleft @topright @bottomright @bottomleft;
 
 	-moz-background-clip: padding;
 	-webkit-background-clip: padding-box;
 	background-clip: padding-box;
+	.pie();
 }
 .rounded(@radius: 2px) {
 	.border-radius(@radius, @radius, @radius, @radius);
@@ -234,6 +234,7 @@ body {
                     color: @baseColor0l;
                     width: 100%;
                     position: absolute;
+	                z-index: 4;
                     bottom: @langElHeight;
                     right: 0;
                     padding: 0 @langElHeight*6;
