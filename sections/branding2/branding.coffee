@@ -35,21 +35,22 @@ class window.HeaderView
     @$document.on 'scroll.header touchstop.header', @adjustPosition
     @_afterShow()
 
-  getScrollY: ->
-    y = 0
-    if typeof window.pageYOffset is "number"
-      # Netscape compliant
-      y = window.pageYOffset
-    else if document.body?.scrollTop
-      # DOM compliant
-      y = document.body.scrollTop
-    else if document.documentElement?.scrollTop
-      # IE6 standards compliant mode
-      y = document.documentElement.scrollTop
+#  getScrollY: ->
+#    y = 0
+#    if typeof window.pageYOffset is "number"
+#      # Netscape compliant
+#      y = window.pageYOffset
+#    else if document.body?.scrollTop
+#      # DOM compliant
+#      y = document.body.scrollTop
+#    else if document.documentElement?.scrollTop
+#      # IE6 standards compliant mode
+#      y = document.documentElement.scrollTop
 
   adjustPosition: =>
     @_scrollTop = @$document.scrollTop()
     @_parentTop = @$background.offsetParent().offset().top
+    console.log @_scrollTop
 
     @$title.css top: if @_scrollTop > @$title._top then 0 else @$title._top - @_scrollTop
     @$line.css top: if @_scrollTop > @$line._top then -100 else @$line._top - @_scrollTop
