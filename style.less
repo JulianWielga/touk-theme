@@ -1,3 +1,6 @@
+.pie() {
+	behavior: url(@{plPluginsRoot}/wp-pie/pie/PIE.htc);
+}
 .text-shadow(@arguments){
 	-webkit-text-shadow: @arguments;
 	-moz-text-shadow: @arguments;
@@ -12,9 +15,12 @@
 	background: -webkit-gradient(linear, left bottom, left top, color-stop(0, @start), color-stop(1, @stop));
 	background: -ms-linear-gradient(bottom,	@start,	@stop);
 	background: -moz-linear-gradient(center bottom,	@start 0%, @stop 100%);
+	-pie-background: linear-gradient(@start, @stop); /*PIE*/
+	.pie();
 }
 
 .border-radius(@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0){
+	.pie();
 	-webkit-border-top-right-radius: @topright;
 	-webkit-border-bottom-right-radius: @bottomright;
 	-webkit-border-bottom-left-radius: @bottomleft;
@@ -31,13 +37,13 @@
 	-moz-background-clip: padding;
 	-webkit-background-clip: padding-box;
 	background-clip: padding-box;
-	behavior: url(@{plPluginsRoot}/wp-pie/pie/PIE.htc);
 }
 .rounded(@radius: 2px) {
 	.border-radius(@radius);
 }
 
 .box-shadow(@arguments){
+	.pie();
 	-webkit-box-shadow: @arguments;
 	-moz-box-shadow: @arguments;
 	box-shadow: @arguments;
@@ -221,7 +227,7 @@ body {
             height: 0;
             z-index: 3;
             .inner {
-                .border-radius(@decoSize, @decoSize,@decoSize,@decoSize);
+                .rounded(@decoSize);
                 .box-shadow(-10px 10px 2px @baseColor2l);
                 .gradient(@baseColor0, @baseColor0, lighten(@baseColor0, 40%));
                 .lang {
