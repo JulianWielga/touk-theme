@@ -1,7 +1,7 @@
 .pie() {
 	behavior: url(@{plPluginsRoot}/wp-pie/pie/PIE.htc);
 }
-.opacity(@o) {
+.transparency(@o) {
 	opacity: @o / 100;
 	filter: alpha(opacity = @o);
 }
@@ -155,7 +155,7 @@ body {
 		.gradient(white, fade(#eeeeee, 90%), #e0e0e0);
 		.drop-shadow(0, 1px, 3px, 0.2);
 		.no-rgba & {
-			.opacity(90);
+			.transparency(90);
 		}
 	}
 }
@@ -237,7 +237,7 @@ body {
 		            .gradient(white, fade(@baseColor0, 15%), fade(@baseColor0, 0%));
 	            }
 	            .no-rgba & {
-                    .opacity(10);
+                    .transparency(10);
                 }
             }
         }
