@@ -57,12 +57,12 @@ class window.HeaderView
 
 
     p = @_scrollTop / @$title._top                   # 0-n
-    console.log p
     if p < 20
       q = 1 - (@$title.position().top / @$title._top)  # 0-1
       @$logo.css top: @_calculateTop @$logo._top
       @$about.css top: (@_calculateTop @$about._top) - @_scrollTop
       @$background.css top: @_calculateTop @$background._top
+      console.log @_calculateTop @$background._top
       @$about.css opacity: 1-q
 
     @oldTitle = @$subtitle.text()
@@ -93,6 +93,7 @@ class window.HeaderView
     @$logo._top = @$logo?.offset().top - @_positionDiff
     @$about._top = @$about?.offset().top - @_positionDiff
     @$background._top = @$background?.offset().top - @_positionDiff
+    console.log @$background._top
 #    @$background._borderColor = @$background.children().css 'borderColor'
     @$subtitle = @$title.find('.subtitle').hide()
     @$titles = jQuery('#column-main .entry-title')
