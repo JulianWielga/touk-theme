@@ -84,7 +84,7 @@ class window.HeaderView
 
 
   _afterShow: =>
-    _scrollTop = window.pageYOffset
+    _scrollTop = @$document.scrollTop()
     _parentTop = @$background.offsetParent().offset().top
     @_positionDiff = _parentTop - _scrollTop
 
