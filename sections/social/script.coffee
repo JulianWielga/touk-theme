@@ -1,10 +1,8 @@
-$ = jQuery
-
-$socialIcons = $('.social-icons a')
+$socialIcons = jQuery('.social-icons a')
 
 $socialIcons.hover ->
-  $(this).fadeTo 'fast', 1
+  jQuery(this).fadeTo 'fast', 1
 , ->
-  $(this).fadeTo 'fast', 0.5
+  jQuery(this).fadeTo 'fast', 0.5
 
-$socialIcons.fadeTo 0.5
+$socialIcons.fadeTo 'fast', 0.5
