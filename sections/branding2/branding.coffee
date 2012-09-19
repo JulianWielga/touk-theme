@@ -25,6 +25,7 @@ class window.HeaderView
     @initialize()
 
   initialize: ->
+    @$window = jQuery(window)
     @$document = jQuery(document)
     @$logo = @$('.logo')
     @$about = @$('.about')
@@ -32,7 +33,7 @@ class window.HeaderView
     @$line = @$('.line')
     @$deco = @$('.deco')
     @$background = jQuery('<div class="header-background">').append('<div class="inner">').appendTo @$el
-    @$document.on 'scroll.header touchstop.header', @adjustPosition
+    @$window.on 'scroll.header touchstop.header', @adjustPosition
     @_afterShow()
 
 #  getScrollY: ->
