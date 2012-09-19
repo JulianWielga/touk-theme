@@ -92,7 +92,7 @@ class window.HeaderView
     @$line._top = @$line?.offset().top - @_positionDiff
     @$logo._top = @$logo?.offset().top - @_positionDiff
     @$about._top = @$about?.offset().top - @_positionDiff
-    @$background._top = @$background?.offset().top - @_positionDiff
+    @$background._top = - 100 - @_positionDiff
     console.log @$background._top
 #    @$background._borderColor = @$background.children().css 'borderColor'
     @$subtitle = @$title.find('.subtitle').hide()
