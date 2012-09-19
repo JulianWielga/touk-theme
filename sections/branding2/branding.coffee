@@ -57,9 +57,9 @@ class window.HeaderView
 
 
     p = @_scrollTop / @$title._top                   # 0-n
+    console.log p
     if p < 20
       q = 1 - (@$title.position().top / @$title._top)  # 0-1
-      console.log p, q
       @$logo.css top: @_calculateTop @$logo._top
       @$about.css top: (@_calculateTop @$about._top) - @_scrollTop
       @$background.css top: @_calculateTop @$background._top
