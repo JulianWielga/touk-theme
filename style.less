@@ -229,15 +229,14 @@ body {
             }
         }
         .line {
-            .shape(@decoColor, 100%, 5px, @titleTop + @titleHeight + @gridSize - 4px, 0);
+            .shape(fade(@baseColor0, 10%), 100%, 5px, @titleTop + @titleHeight + @gridSize - 4px, 0);
             width: auto;
             right: 0;
             .inner {
-                .gradient(white, fade(@baseColor0, 15%), fade(@baseColor0, 0%));
-                .border-radius(100%, 100%, 0, 100%);
-	            .no-rgba & {
-                    .opacity(10);
-                }
+	            .rgba & {
+                    .gradient(white, fade(@baseColor0, 15%), fade(@baseColor0, 0%));
+	            }
+	            .border-radius(100%, 100%, 0, 100%);
             }
         }
         .deco {
