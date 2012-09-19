@@ -51,7 +51,6 @@ class window.HeaderView
   adjustPosition: =>
     @_scrollTop = @$document.scrollTop()
     @_parentTop = @$background.offsetParent().offset().top
-    console.log @_scrollTop
 
     @$title.css top: if @_scrollTop > @$title._top then 0 else @$title._top - @_scrollTop
     @$line.css top: if @_scrollTop > @$line._top then -100 else @$line._top - @_scrollTop
@@ -60,6 +59,7 @@ class window.HeaderView
     p = @_scrollTop / @$title._top                   # 0-n
     if p < 20
       q = 1 - (@$title.position().top / @$title._top)  # 0-1
+      console.log p, q
       @$logo.css top: @_calculateTop @$logo._top
       @$about.css top: (@_calculateTop @$about._top) - @_scrollTop
       @$background.css top: @_calculateTop @$background._top
