@@ -15,7 +15,7 @@
 	background: -webkit-gradient(linear, left bottom, left top, color-stop(0, @start), color-stop(1, @stop));
 	background: -ms-linear-gradient(bottom,	@start,	@stop);
 	background: -moz-linear-gradient(center bottom,	@start 0%, @stop 100%);
-	-pie-background: linear-gradient(@start, @stop); /*PIE*/
+	-pie-background: linear-gradient(@stop, @start); /*PIE*/
 	.pie();
 }
 
@@ -39,7 +39,7 @@
 	background-clip: padding-box;
 }
 .rounded(@radius: 2px) {
-	.border-radius(@radius);
+	.border-radius(@radius, @radius, @radius, @radius);
 }
 
 .box-shadow(@arguments){
