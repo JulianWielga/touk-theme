@@ -62,7 +62,6 @@ class window.HeaderView
       @$logo.css top: @_calculateTop @$logo._top
       @$about.css top: (@_calculateTop @$about._top) - @_scrollTop
       @$background.css top: @_calculateTop @$background._top
-      console.log @_calculateTop @$background._top
       @$about.css opacity: 1-q
 
     @oldTitle = @$subtitle.text()
