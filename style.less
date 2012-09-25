@@ -273,27 +273,30 @@ body {
                         line-height: @langElHeight;
                         height: @langElHeight;
                         li {
-                            line-height: @langElHeight;
-                            .box-sizing(border-box);
-                            display: inline-block;
-                            font-size: @langElHeight/2;
-                            font-weight: bold;
-                            padding: 0 @langElHeight/2;
-                            vertical-align: bottom;
-                            background: @baseColor2l;
-                            color: white;
-                            .drop-shadow(0px, 1px, 3px, 20%);
-                            .rounded(1px);
-                            cursor: pointer;
+	                        display: inline-block;
+	                        .box-sizing(border-box);
+	                        line-height: @langElHeight;
+	                        font-size: @langElHeight/2;
+	                        font-weight: bold;
+	                        vertical-align: bottom;
+	                        color: white;
+	                        padding: 0;
 	                        &.selected {
 		                        font-weight: bold;
 	                        }
-	                        &:hover {
-		                        background: @baseColor2;
+	                        a {
+		                        &:hover {
+			                        background: @baseColor2;
+			                        .rounded(1px);
+		                        }
+		                        cursor: pointer;
 		                        .rounded(1px);
-	                        }
-                            a {
-	                            color: inherit;
+		                        .drop-shadow(0px, 1px, 3px, 20%);
+		                        background: @baseColor2l;
+		                        display: inline-block;
+		                        .box-sizing(border-box);
+		                        padding: 0 @langElHeight/2;
+		                        color: inherit;
                             }
                         }
                     }
