@@ -30,6 +30,7 @@ require_once( dirname(__FILE__) . '/setup.php' );
 	// This makes the font available to the framework and the user via the admin panel.
 
 add_filter('pagelines_foundry', 'addMSFont');
+add_filter('ploption_pagelines_custom_logo_url', 'customLogoUrl');
 add_action('wp_enqueue_scripts', 'toukThemeEnqueue');
 
 function addMSFont( $thefoundry ) {
@@ -42,6 +43,10 @@ function addMSFont( $thefoundry ) {
 			)
 		);
 	return array_merge( $thefoundry, $myfont );
+}
+
+function customLogoUrl() {
+    return "http://touk.pl/";
 }
 
 function toukThemeEnqueue() {

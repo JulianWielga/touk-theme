@@ -33,22 +33,11 @@ class window.HeaderView
     @$line = @$('.line')
     @$deco = @$('.deco')
     @$background = jQuery('<div class="header-background">').append('<div class="inner">').appendTo @$el
-    @$window.on 'scroll.header touchstop.header', @adjustPosition
-    @_afterShow()
+    @$window.on 'scroll.header touchstop.header', @_adjustPosition
+    @$document.on 'ready.header', @_afterShow()
+    @_savePositions()
 
-#  getScrollY: ->
-#    y = 0
-#    if typeof window.pageYOffset is "number"
-#      # Netscape compliant
-#      y = window.pageYOffset
-#    else if document.body?.scrollTop
-#      # DOM compliant
-#      y = document.body.scrollTop
-#    else if document.documentElement?.scrollTop
-#      # IE6 standards compliant mode
-#      y = document.documentElement.scrollTop
-
-  adjustPosition: =>
+  _adjustPosition: =>
     @_scrollTop = @$document.scrollTop()
     @_parentTop = @$background.offsetParent().offset().top
 
@@ -82,7 +71,7 @@ class window.HeaderView
     @$title.position().top * offsetTop / @$title._top
 
 
-  _afterShow: =>
+  _savePositions: =>
     _scrollTop = @$document.scrollTop()
     _parentTop = @$background.offsetParent().offset().top
     @_positionDiff = _parentTop - _scrollTop
@@ -94,9 +83,10 @@ class window.HeaderView
     @$background._top = -(@$background?.height() + 10) - @_positionDiff
     @$background.css top: @$background._top
 #    @$background._borderColor = @$background.children().css 'borderColor'
+
+  _afterShow: =>
     @$subtitle = @$title.find('.subtitle').hide()
     @$titles = jQuery('#column-main .entry-title')
-
     @$el.css
       position: 'fixed'
       width: '100%'

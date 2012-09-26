@@ -79,7 +79,7 @@ class PageLinesToukBranding extends PageLinesSection
                     <div class="inner"><?php pagelines_main_logo()?></div>
                 </div>
                 <div class="title">
-                    <div class="inner"><span class="main"><?php echo get_bloginfo('name')?> </span><span class="subtitle" style="display: none; "></span>
+                    <div class="inner"><a href="<?=home_url()?>"><span class="main"><?php echo get_bloginfo('name')?> </span></a><span class="subtitle" style="display: none; "></span>
                     </div>
                 </div>
                 <div class="line">
