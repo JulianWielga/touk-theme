@@ -80,10 +80,10 @@ class window.HeaderView
 		_parentTop = @$background.offsetParent().offset().top
 		@_positionDiff = _parentTop - _scrollTop
 
-		@$title._top = parseInt(@$title?.css('top')) - @_positionDiff
-		@$line._top = parseInt(@$line?.css('top')) - @_positionDiff
-		@$logo._top = parseInt(@$logo?.css('top')) - @_positionDiff
-		@$about._top = parseInt(@$about?.css('top')) - @_positionDiff
+		@$title._top = parseInt @$title?.css('top')
+		@$line._top = parseInt @$line?.css('top')
+		@$logo._top = parseInt @$logo?.css('top')
+		@$about._top = parseInt @$about?.css('top')
 		@$background._top = -(@$background?.height() + 10) - @_positionDiff
 		@$background.css top: @$background._top
 	#    @$background._borderColor = @$background.children().css 'borderColor'
@@ -91,10 +91,11 @@ class window.HeaderView
 	_afterShow: =>
 		@$subtitle = @$title.find('.subtitle').hide()
 		@$titles = jQuery('#column-main .entry-title')
+		top = @_positionDiff
 		@$el.css
 			position: 'fixed'
 			width: '100%'
-			top: 0
+			top: top
 
 
 window.branding2 = new HeaderView(jQuery('#branding2'))
