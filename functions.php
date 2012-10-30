@@ -53,3 +53,30 @@ function toukThemeEnqueue() {
   $ss_url = get_stylesheet_directory_uri();
   wp_enqueue_script( 'touk-theme-scripts', "{$ss_url}/js/jquery.easing.1.3.js", array('jquery') );
 }
+
+
+
+//Remove description from title tag
+function pagelines_filter_title( $title ) {
+	global $wp_query, $s, $paged, $page;
+	$sep = __( '|','pagelines' );
+	$new_title = get_bloginfo( 'name' ) . ' ';
+	$bloginfo_description = get_bloginfo( 'description' );
+	if( is_feed() ) {
+		$new_title = $title;
+	} elseif ( ( is_home () || is_front_page() ) && ! empty( $bloginfo_description ) && ! $paged && ! $page ) {
+//		$new_title .= $sep . ' ' . $bloginfo_description;
+	} elseif ( is_category() ) {
+		$new_title .= $sep . ' ' . single_cat_title( '', false );
+	} elseif ( is_single() || is_page() ) {
+		$new_title .= $sep . ' ' . single_post_title( '', false );
+	} elseif ( is_search() ) {
+		$new_title .= $sep . ' ' . sprintf( __( 'Search Results: %s','pagelines' ), esc_html( $s ) );
+	} else
+		$new_title .= $sep . ' ' . $title;
+	if ( $paged || $page ) {
+		$new_title .= ' ' . $sep . ' ' . sprintf( __( 'Page: %s', 'pagelines' ), max( $paged, $page ) );
+	}
+    return apply_filters( 'pagelines_meta_title', $new_title );
+}
+add_filter( 'wp_title', 'pagelines_filter_title' );
