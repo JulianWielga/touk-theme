@@ -1,4 +1,4 @@
-@ver: '0.8.2';
+@ver: '0.8.3';
 .pie() {
 	behavior: url(@{plPluginsRoot}/wp-pie/pie/PIE.htc);
 }
@@ -99,7 +99,10 @@
 @rightContentPadding: 4*@leftContentPadding;
 
 @baseColor3: @pl-header; //spin(@baseColor2, 120);
-@baseColor2: #4B9D28;
+
+//@baseColor2: saturate(spin(@baseColor3, -120),100%);
+//@baseColor2: #66a123;
+@baseColor2: hsl(hue(@baseColor3) - 99, saturation(@baseColor3) - 36, lightness(@baseColor3) + 12);
 @baseColor2l: lighten(@baseColor2, 5%);
 @baseColor1: spin(@baseColor2, -120);
 @baseColor1l: saturate(@baseColor1, 50%);
@@ -111,7 +114,7 @@
 //@pl-link: @baseColor1d;
 @textColor: #000000;
 @decoColor: @baseColor2;
-@decoColorTrans: fade(@decoColor, 100%);
+@decoColorTrans: fade(@decoColor, 40%);
 @bigTextColor: @baseColor3;
 @infoTextColor: @baseColor0l;
 
@@ -133,6 +136,7 @@ body {
     .std-text-shadow();
 	.multiplebgs & {
 		background:
+			url('@{plChildRoot}/images/back.jpg') top right repeat,
 			url('@{plChildRoot}/images/circles.png') top center no-repeat,
 			url('@{plChildRoot}/images/circles2.png') bottom center no-repeat;
 	}
