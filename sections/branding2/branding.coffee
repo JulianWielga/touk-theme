@@ -1,3 +1,5 @@
+isMobile = /iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase())
+
 class window.HeaderView
 
 	$el: null
@@ -39,6 +41,8 @@ class window.HeaderView
 			@_afterShow()
 
 	_adjustPosition: =>
+		return if isMobile
+
 		@_scrollTop = @$document.scrollTop()
 		@_parentTop = @$background.offsetParent().offset().top
 
@@ -93,9 +97,11 @@ class window.HeaderView
 		@$titles = jQuery('#column-main .entry-title')
 		top = @_positionDiff
 		@$el.css
-			position: 'fixed'
+			position: if isMobile then 'absolute' else 'fixed'
 			width: '100%'
 			top: top
 
+#			overflowX: 'hidden'
 
 window.branding2 = new HeaderView(jQuery('#branding2'))
+
