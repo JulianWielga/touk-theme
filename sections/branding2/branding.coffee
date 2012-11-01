@@ -1,4 +1,8 @@
-isMobile = /iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase())
+isIOS = /iphone|ipad|ipod|/i.test(navigator.userAgent.toLowerCase())
+isAndroid = /android/i.test(navigator.userAgent.toLowerCase())
+isWindowsMobile = /windows\sce|windows\smobile/i.test(navigator.userAgent.toLowerCase())
+isOtherMobile = /blackberry|mini|palm/i.test(navigator.userAgent.toLowerCase())
+isMobile = isOtherMobile or isWindowsMobile or isAndroid
 
 class window.HeaderView
 
@@ -101,7 +105,6 @@ class window.HeaderView
 			width: '100%'
 			top: top
 
-#			overflowX: 'hidden'
 
 window.branding2 = new HeaderView(jQuery('#branding2'))
 
