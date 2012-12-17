@@ -80,3 +80,26 @@ function pagelines_filter_title( $title ) {
     return apply_filters( 'pagelines_meta_title', $new_title );
 }
 add_filter( 'wp_title', 'pagelines_filter_title' );
+
+
+
+add_action('pagelines_head_last', 'add_description');
+function add_description(){
+	global $post;
+	$descriptionContent = null;
+	if (is_category() || is_tag()) {
+		if (is_category()) {
+			$descriptionContent = "Posts related to Category: " . ucfirst(single_cat_title("", FALSE));
+		} elseif (is_tag()) {
+			$descriptionContent = "Posts related to Tag: " . ucfirst(single_tag_title("", FALSE));
+		}
+	} elseif (have_posts()) {
+		$meta = strip_tags($post->post_content);
+		$meta = str_replace(array("\\n", "\\r", "\\t"), ' ', $meta);
+		$meta = substr($meta, 0, 150);
+		$descriptionContent = $meta;
+	} else {
+		$descriptionContent = get_bloginfo('description');
+	}
+	echo "<meta name='description' content='" . $descriptionContent . "'/>";
+}
