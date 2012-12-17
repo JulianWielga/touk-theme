@@ -94,7 +94,7 @@ function add_description(){
 			$descriptionContent = "Posts related to Tag: " . ucfirst(single_tag_title("", FALSE));
 		}
 	} elseif (have_posts()) {
-		$meta = strip_tags($post->post_content);
+		$meta = strip_tags($post->post_title) . " " . strip_tags($post->post_content);
 		$meta = str_replace(array("\\n", "\\r", "\\t"), ' ', $meta);
 		$meta = substr($meta, 0, 150);
 		$descriptionContent = $meta;
